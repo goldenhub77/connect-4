@@ -1,17 +1,16 @@
 class Board
-  attr_accessor :grid
-  COLS = 7
-  ROWS = 6
-
-  def initialize
+  attr_reader :grid
+  def initialize(rows = 6, cols = 7)
+    @rows = rows
+    @cols = cols
     @grid = build_board
   end
 
   def build_board
     board = []
-    ROWS.times do
+    @rows.times do
       rows = []
-      COLS.times do
+      @cols.times do
         rows << nil
       end
       board << rows
@@ -32,7 +31,7 @@ class Board
     border.size.times do
       board += " "
     end
-    (1..COLS).each do |num|
+    (1..@cols).each do |num|
       board += "#{num} "
     end
     board
