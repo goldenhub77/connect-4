@@ -1,3 +1,4 @@
+require 'colorize'
 class Board
   attr_reader :grid
   def initialize(rows = 6, cols = 7)
@@ -22,17 +23,17 @@ class Board
     board = ""
     border = "| "
     @grid.each.with_index do |row, r_index|
-      board += border
+      board += border.colorize(:blue)
       row.each.with_index do |col, c_index|
-         board += "E "
+         board += "E ".colorize(:green)
       end
-      board += border + "\n"
+      board += border.colorize(:blue) + "\n"
     end
     border.size.times do
       board += " "
     end
     (1..@cols).each do |num|
-      board += "#{num} "
+      board += "#{num} ".colorize(:magenta)
     end
     board
   end
