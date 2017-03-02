@@ -1,6 +1,7 @@
 require 'colorize'
 class Board
-  attr_reader :grid
+  attr_reader :cols, :rows
+  attr_accessor :grid
   def initialize(rows = 6, cols = 7)
     @rows = rows
     @cols = cols
@@ -12,7 +13,7 @@ class Board
     @rows.times do
       rows = []
       @cols.times do
-        rows << nil
+        rows << "E"
       end
       board << rows
     end
@@ -25,7 +26,12 @@ class Board
     @grid.each.with_index do |row, r_index|
       board += border.colorize(:blue)
       row.each.with_index do |col, c_index|
-         board += "E ".colorize(:green)
+        if col == "E"
+          board += "E ".colorize(:green)
+        else
+          board += col == "Y" ? col.colorize(:yellow) : col.colorize(:red)
+          board += " "
+        end
       end
       board += border.colorize(:blue) + "\n"
     end

@@ -18,8 +18,8 @@ RSpec.describe Board do
   it '#print_board must display default or user entered grid to terminal' do
     default_output = "| E E E E E E E | \n| E E E E E E E | \n| E E E E E E E | \n| E E E E E E E | \n| E E E E E E E | \n| E E E E E E E | \n  1 2 3 4 5 6 7 "
     custom_output = "| E E E E E | \n| E E E E E | \n| E E E E E | \n| E E E E E | \n  1 2 3 4 5 "
-        expect(default_board.print_board).to eq(default_output)
-        expect(custom_board.print_board).to eq(custom_output)
+        expect(default_board.print_board.uncolorize).to eq(default_output)
+        expect(custom_board.print_board.uncolorize).to eq(custom_output)
   end
 
 end
